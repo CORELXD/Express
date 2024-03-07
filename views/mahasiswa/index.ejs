@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mahasiswa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">DATA Mahasiswa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../mahasiswa">Daftar Mahasiswa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pendidikan">Pendidikan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../keahlian">keahlian</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-lg mt-5">
+        <% if (messages.success) { %>
+            <div class="alert alert-info" role="alert">
+                <%= messages.success %>
+            </div>
+        <% } %>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Daftar Mahasiswa
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">NRP</th>
+                                        <th scope="col">Nama Depan</th>
+                                        <th scope="col">Nama Belakang</th>
+                                        <th scope="col">Jenis Kelamin</th>
+                                        <th scope="col">Agama</th>
+                                        <th scope="col">Umur</th>
+                                        <th scope="col">Tinggi Badan</th>
+                                        <th scope="col">Golongan Darah</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Hobi</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">No Telepon</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th scope="row"><%= i + 1 %></th>
+                                            <td><%= data[i].nrp %></td>
+                                            <td><%= data[i].nama_depan %></td>
+                                            <td><%= data[i].nama_belakang %></td>
+                                            <td><%= data[i].jenis_kelamin %></td>
+                                            <td><%= data[i].agama %></td>
+                                            <td><%= data[i].umur %></td>
+                                            <td><%= data[i].tinggi_badan %></td>
+                                            <td><%= data[i].gol_darah %></td>
+                                            <td><%= data[i].alamat %></td>
+                                            <td><%= data[i].hobi %></td>
+                                            <td><%= data[i].email %></td>
+                                            <td><%= data[i].no_telpon %></td>
+                                            <td>
+                                                <a href="/mahasiswa/edit/<%= data[i].id_mahasiswa %>" class="btn btn-warning btn-sm mr-2">Edit</a>
+                                                <a href="/mahasiswa/delete/<%= data[i].id_mahasiswa %>" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3">
+                            <a href="/mahasiswa/create" class="btn btn-success btn-sm">Tambah</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

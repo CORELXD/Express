@@ -10,6 +10,9 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var kategoriRouter = require('./routes/kategori');
+var mahasiswaRouter = require('./routes/mahasiswa');
+var pendidikanRouter = require('./routes/pendidikan');
+var keahlianRouter = require('./routes/keahlian');
 
 var app = express();
 
@@ -39,6 +42,9 @@ app.use(flash())//gunakan flash express menggunkan use
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/kategori', kategoriRouter);
+app.use('/mahasiswa', mahasiswaRouter);
+app.use('/pendidikan', pendidikanRouter);
+app.use('/keahlian', keahlianRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
