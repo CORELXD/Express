@@ -1,21 +1,21 @@
 const connection = require('../config/Database.js');
 
-class Model_Mahasiswa {
+class Model_Pemilik {
     static async getAll() {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM Mahasiswa ORDER BY id_mahasiswa DESC', (err, rows) => {
+            connection.query('SELECT * FROM pemilik ORDER BY id_pemilik DESC', (err, rows) => {
                 if (err) {
                     reject(err);
                 } else {
                     resolve(rows);
                 }
             });
-        }); 
+        });
     }
 
     static async getById(id) {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM Mahasiswa WHERE id_mahasiswa = ?', id, (err, rows) => {
+            connection.query('SELECT * FROM pemilik WHERE id_pemilik = ?', id, (err, rows) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -27,7 +27,7 @@ class Model_Mahasiswa {
 
     static async store(data) {
         return new Promise((resolve, reject) => {
-            connection.query('INSERT INTO Mahasiswa SET ?', data, (err, result) => {
+            connection.query('INSERT INTO pemilik SET ?', data, (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -39,7 +39,7 @@ class Model_Mahasiswa {
 
     static async update(id, data) {
         return new Promise((resolve, reject) => {
-            connection.query('UPDATE Mahasiswa SET ? WHERE id_mahasiswa = ?', [data, id], (err, result) => {
+            connection.query('UPDATE pemilik SET ? WHERE id_pemilik = ?', [data, id], (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -51,7 +51,7 @@ class Model_Mahasiswa {
 
     static async delete(id) {
         return new Promise((resolve, reject) => {
-            connection.query('DELETE FROM Mahasiswa WHERE id_mahasiswa = ?', id, (err, result) => {
+            connection.query('DELETE FROM pemilik WHERE id_pemilik = ?', id, (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -60,7 +60,6 @@ class Model_Mahasiswa {
             });
         });
     }
-
 }
 
-module.exports = Model_Mahasiswa;
+module.exports = Model_Pemilik;
