@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Model_Pemilik = require('../model/model_pemilik');
+const Model_Pemilik = require('../model/Model_Pemilik');
 
 router.get('/', async function(req, res, next) {
     try {
@@ -39,12 +39,17 @@ router.get('/edit/:id', async function (req, res, next) {
 router.post('/store', async function (req, res, next) {
     try {
         let { nama_pemilik, alamat, no_hp } = req.body;
-        await Model_Pemilik.create({ nama_pemilik, alamat, no_hp });
+        let data = {
+            nama_pemilik,
+            alamat,
+            no_hp
+        }
+        await Model_Pemilik.create(data);
         req.flash('success', 'Berhasil menyimpan data pemilik');
         res.redirect('/pemilik');
     } catch (error) {
         req.flash('error', 'Gagal menyimpan data pemilik');
-        res.redirect('/pemilik');
+        res.redirect('/pemilikgagal');
     }
 });
 

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Model_AlatTangkap = require('../model/model_alat_tangkap');
+const Model_Alat_Tangkap = require('../model/Model_Alat_Tangkap');
 
 router.get('/', async function(req, res, next) {
     try {
-        let rows = await Model_AlatTangkap.getAll();
+        let rows = await Model_Alat_Tangkap.getAll();
         res.render('alat_tangkap/index', {
             data: rows
         });
@@ -22,7 +22,7 @@ router.get('/create', function (req, res, next) {
 router.get('/edit/:id', async function (req, res, next) {
     try {
         let id = req.params.id;
-        let alat_tangkap = await Model_AlatTangkap.getById(id);
+        let alat_tangkap = await Model_Alat_Tangkap.getById(id);
         res.render('alat_tangkap/edit', {
             id: alat_tangkap.id_alat_tangkap,
             nama_alat_tangkap: alat_tangkap.nama_alat_tangkap
@@ -35,12 +35,15 @@ router.get('/edit/:id', async function (req, res, next) {
 router.post('/store', async function (req, res, next) {
     try {
         let { nama_alat_tangkap } = req.body;
-        await Model_AlatTangkap.create({ nama_alat_tangkap });
+        let data = {
+            nama_alat_tangkap
+        }
+        await Model_Alat_Tangkap.create(data);
         req.flash('success', 'Berhasil menyimpan data alat tangkap');
         res.redirect('/alat_tangkap');
     } catch (error) {
         req.flash('error', 'Gagal menyimpan data alat tangkap');
-        res.redirect('/alat_tangkap');
+        res.redirect('/alat_tangkap_Gagal');
     }
 });
 
@@ -48,7 +51,7 @@ router.post('/update/:id', async function (req, res, next) {
     try {
         let id = req.params.id;
         let { nama_alat_tangkap } = req.body;
-        await Model_AlatTangkap.update(id, { nama_alat_tangkap });
+        await Model_Alat_Tangkap.update(id, { nama_alat_tangkap });
         req.flash('success', 'Berhasil memperbarui data alat tangkap');
         res.redirect('/alat_tangkap');
     } catch {
@@ -60,7 +63,7 @@ router.post('/update/:id', async function (req, res, next) {
 router.get('/delete/:id', async function (req, res, next) {
     try {
         let id = req.params.id;
-        await Model_AlatTangkap.delete(id);
+        await Model_Alat_Tangkap.delete(id);
         req.flash('success', 'Berhasil menghapus data alat tangkap');
         res.redirect('/alat_tangkap');
     } catch (error) {

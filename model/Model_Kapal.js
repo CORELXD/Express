@@ -3,15 +3,18 @@ const connection = require('../config/Database.js');
 class Model_Kapal {
     static async getAll() {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM kapal ORDER BY id_kapal DESC', (err, rows) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(rows);
-                }
-            });
+          connection.query(
+            "SELECT kapal.*, pemilik.nama_pemilik AS nama_pemilik, dpi.nama_dpi AS nama_dpi, alat_tangkap.nama_alat_tangkap AS nama_alat_tangkap FROM kapal JOIN pemilik ON kapal.id_pemilik = pemilik.id_pemilik JOIN dpi ON kapal.id_dpi = dpi.id_dpi JOIN alat_tangkap ON kapal.id_alat_tangkap = alat_tangkap.id_alat_tangkap",
+            (err, rows) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(rows);
+              }
+            }
+          );
         });
-    }
+      }
 
     static async getById(id) {
         return new Promise((resolve, reject) => {
@@ -19,13 +22,13 @@ class Model_Kapal {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(rows);
+                    resolve(rows[0]);
                 }
             });
         });
     }
 
-    static async store(data) {
+    static async create(data) {
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO kapal SET ?', data, (err, result) => {
                 if (err) {

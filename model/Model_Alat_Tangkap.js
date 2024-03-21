@@ -1,6 +1,6 @@
 const connection = require('../config/Database.js');
 
-class Model_AlatTangkap {
+class Model_Alat_Tangkap {
     static async getAll() {
         return new Promise((resolve, reject) => {
             connection.query('SELECT * FROM alat_tangkap ORDER BY id_alat_tangkap DESC', (err, rows) => {
@@ -19,13 +19,13 @@ class Model_AlatTangkap {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(rows);
+                    resolve(rows[0]);
                 }
             });
         });
     }
 
-    static async store(data) {
+    static async create(data) {
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO alat_tangkap SET ?', data, (err, result) => {
                 if (err) {
@@ -62,4 +62,4 @@ class Model_AlatTangkap {
     }
 }
 
-module.exports = Model_AlatTangkap;
+module.exports = Model_Alat_Tangkap;

@@ -1,0 +1,31 @@
+<form action="/kapal/store" method="POST">
+    <div class="mb-3">
+        <label for="nama_kapal" class="form-label">Nama Kapal</label>
+        <input type="text" class="form-control" name="nama_kapal" required>
+    </div>
+    <div class="mb-3">
+        <label for="id_pemilik" class="form-label">Pemilik</label>
+        <select class="form-select" name="id_pemilik" required>
+            <% pemilik.forEach(function(pemilik) { %>
+            <option value="<%= pemilik.id_pemilik %>"><%= pemilik.nama_pemilik %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="id_dpi" class="form-label">DPI</label>
+        <select class="form-select" name="id_dpi" required>
+            <% dpi.forEach(function(dpi) { %>
+            <option value="<%= dpi.id_dpi %>"><%= dpi.nama_dpi %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="id_alat_tangkap" class="form-label">Alat Tangkap</label>
+        <select class="form-select" name="id_alat_tangkap" required>
+            <% alatTangkap.forEach(function(alat) { %>
+            <option value="<%= alat.id_alat_tangkap %>"><%= alat.nama_alat_tangkap %></option>
+            <% }) %>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan</button>
+</form>

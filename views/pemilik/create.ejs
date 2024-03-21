@@ -1,75 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Form</title>
-    <!-- Add Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 500px;
-        }
-
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        .mb-3 {
-            margin-bottom: 20px;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-            border-color: #218838;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container mt-5">
-    <form action="/pemilik/store" method="POST">
-        <div class="mb-3">
-            <label for="nama_pemilik" class="form-label">Nama Pemilik</label>
-            <input type="text" class="form-control" name="nama_pemilik" required>
-        </div>
-        <div class="mb-3">
-            <label for="alamat_pemilik" class="form-label">Alamat Pemilik</label>
-            <textarea class="form-control" name="alamat_pemilik" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="no_hp_pemilik" class="form-label">Nomor HP Pemilik</label>
-            <input type="tel" class="form-control" name="no_hp_pemilik" required>
-        </div>
-        <div class="mb-3">
-            <label for="nrp" class="form-label">NRP</label>
-            <input type="text" class="form-control" name="nrp" required>
-        </div>
-        <!-- Other form fields go here -->
-        <div class="mb-3">
-            <button type="submit" class="btn btn-success">Simpan</button>
-        </div>
-    </form>
-</div>
-
-<!-- Add Bootstrap JS and Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<form action="/pemilik/store" method="POST"> 
+    <div class="form-group">
+        <label for="nama_pemilik">Nama Pemilik</label>
+        <input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik" required> 
+    </div>
+    <div class="form-group">
+        <label for="alamat">Alamat</label>
+        <input type="text" class="form-control" name="alamat" id="alamat" required> 
+    </div>
+    <div class="form-group">
+        <label for="no_hp">No Telepon</label>
+        <input type="tel" class="form-control" name="no_hp" id="no_hp" required> 
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+</form>  

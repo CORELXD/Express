@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var flash = require('express-flash');
 var session = require('express-session');
+const MemoryStore = require('session-memory-store')(session);
 
 // Import file-route yang dibutuhkan
 var indexRouter = require('./routes/index');
@@ -35,11 +36,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup session
 app.use(session({
   cookie: {
-      maxAge: 6000
+      maxAge: 60000000000,
+      secure: false,
+      httpOnly: true,
+      sameSite: 'strict',
+      // domain: 'domainkitananti.com',
   },
   store: new session.MemoryStore(),
   saveUninitialized: true,
-  resave: true,
+  resave: false,
   secret: 'secret'
 }));
 

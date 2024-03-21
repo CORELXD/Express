@@ -1,6 +1,7 @@
 const connection = require('../config/Database.js');
 
-class Model_DPI {
+class Model_Dpi {
+
     static async getAll() {
         return new Promise((resolve, reject) => {
             connection.query('SELECT * FROM dpi ORDER BY id_dpi DESC', (err, rows) => {
@@ -19,13 +20,13 @@ class Model_DPI {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(rows);
+                    resolve(rows[0]);
                 }
             });
         });
     }
 
-    static async store(data) {
+    static async create(data) {
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO dpi SET ?', data, (err, result) => {
                 if (err) {
@@ -62,4 +63,4 @@ class Model_DPI {
     }
 }
 
-module.exports = Model_DPI;
+module.exports = Model_Dpi;
