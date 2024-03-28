@@ -11,6 +11,7 @@ const MemoryStore = require('session-memory-store')(session);
 // Import file-route yang dibutuhkan
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var superusersRouter = require('./routes/supersusers');
 var kategoriRouter = require('./routes/kategori');
 var mahasiswaRouter = require('./routes/mahasiswa');
 var pendidikanRouter = require('./routes/pendidikan');
@@ -54,6 +55,7 @@ app.use(flash());
 // Routing
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/superusers', superusersRouter);
 app.use('/kategori', kategoriRouter);
 app.use('/mahasiswa', mahasiswaRouter);
 app.use('/pendidikan',pendidikanRouter);

@@ -9,10 +9,10 @@ router.get('/', async function(req, res, next) {
     let Data = await Model_Users.getId(id);
     if (Data.length > 0) {
       //Tambahkan Kondisi pengecekan level
-      if(Data[0].level_users !=2) {
-        res.redirect('/logout')
+      if(Data[0].level_users !=1) {
+        res.render('/logout')
       }else {
-        res.render('users/index', {
+        res.render('users/super', {
           title : 'Users Home',
           email: Data[0].email
         });
